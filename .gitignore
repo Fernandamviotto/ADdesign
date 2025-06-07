@@ -1,0 +1,92 @@
+# Ambiente virtual
+.env
+.env.*
+venv/
+
+# Arquivos de configuração do Django
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.log
+*.sqlite3
+# Arquivos de configuração do Django
+*.py[cod]
+*.pyd
+*.pyo
+*.db
+*.log
+*.sqlite3
+
+# Arquivos de configuração do Django
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.log
+*.sqlite3
+
+# Arquivos de configuração do Django
+settings.pyc
+
+# Arquivos de cache do Django
+__pycache__/
+.cache/
+
+# Arquivos de teste
+test_*.py
+
+# Arquivos de backup e temporários
+*~
+*.bak
+*.swp
+
+# Arquivos de configuração do editor de texto
+.editorconfig
+
+
+# Dependências do Node.js (se houver)
+node_modules/
+
+# Arquivos do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Arquivos de log
+*.log
+
+# Banco de dados SQLite
+db.sqlite3
+*.sqlite3
+
+# Arquivos de exportação
+*.pdf
+*.xlsx
+*.xls
+
+# Mídia (uploads de imagens, documentos)
+media/
+
+# Configurações do VSCode
+.vscode/
+
+# IDEs
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Django migrations
+*/migrations/__pycache__/
+*/migrations/*.pyc
+*/migrations/*.pyo
+*/migrations/*.pyd
+*/migrations/*.db
+*/migrations/*.log
+*/migrations/*.sqlite3
+
+# Arquivos temporários do sistema operacional
+.DS_Store
+Thumbs.db
