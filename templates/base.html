@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Sistema de Gestão{% endblock %}</title>
+
+  <link rel="stylesheet" href="{% static 'pedidos/css/style.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  {% block head_scripts %}{% endblock %}
+</head>
+<body>
+  <header>
+    <nav>
+      <h2>Sistema de Pedidos</h2>
+      <ul>
+        <li><a href="{% url 'home' %}">Dashboard</a></li>
+        <li><a href="{% url 'pedido_criar' %}">Novo Pedido</a></li>
+        <li><a href="{% url 'exportar_pdf' %}">Exportar PDF</a></li>
+        <li><a href="{% url 'exportar_excel' %}">Exportar Excel</a></li>
+        <li><a href="#" onclick="logout()">Sair</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 - Sistema de Gestão para Microempreendedores</p>
+  </footer>
+
+  <script>
+    const supabase = supabase.createClient('https://<SEU-PROJETO>.supabase.co', '<SUA-ANON-KEY>');
+    function logout() {
+      supabase.auth.signOut().then(() => {
+        localStorage.removeItem('supabase_token');
+        window.location.href = '/login/';
+      });
+    }
+  </script>
+
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>
