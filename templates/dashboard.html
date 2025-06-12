@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Dashboard</h2>
+
+<div>
+  <p><strong>Total Lucro:</strong> R$ {{ total_lucro }}</p>
+  <p><strong>Quantidade de Serviços:</strong> {{ quantidade_servicos }}</p>
+  <p><strong>Despesas:</strong> R$ {{ despesas }}</p>
+</div>
+
+<div id="graph-div" data-graph='{{ graph_html|safe }}' style="width:100%;height:400px;"></div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="{% static 'pedidos/js/plotly-charts.js' %}"></script>
+{% endblock %}
