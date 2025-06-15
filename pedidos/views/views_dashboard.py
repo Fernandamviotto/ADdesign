@@ -5,6 +5,11 @@ from pedidos.models import Pedido
 import json
 import plotly.graph_objs as go
 import plotly
+from django.shortcuts import render
+
+def dashboard_mock(request):
+    return render(request, "dashboard.html")
+
 
 @login_required
 def dashboard(request):

@@ -36,7 +36,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'core.urls'
+ROOT_URLCONF = 'projeto-config.urls'
 
 # Templates
 TEMPLATES = [
@@ -55,15 +55,17 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'core.wsgi.application'
+WSGI_APPLICATION = 'projeto-config.wsgi.application'
 
 # Banco de dados local
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',  # substitua por PostgreSQL se usar Supabase DB diretamente
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # arquivo persistente
     }
 }
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Usuários, grupos e permissões
 AUTH_PASSWORD_VALIDATORS = [

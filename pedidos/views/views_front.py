@@ -3,6 +3,24 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from pedidos.models import Pedido, Fornecedor
 from pedidos.forms import PedidoForm, FiltroForm
+from django.shortcuts import render
+
+import os
+
+
+
+USE_MOCK = os.getenv("USE_MOCK_DATA") == "True"
+
+def listar_pedidos(request):
+    if USE_MOCK:
+        pedidos = [
+            {'id': 1, 'titulo': 'Pedido Mock 1', 'descricao': 'Descrição mock 1', 'valor': 100.0},
+            {'id': 2, 'titulo': 'Pedido Mock 2', 'descricao': 'Descrição mock 2', 'valor': 200.0},
+        ]
+    else:
+        pedidos = supabase_client.get_pedidos()  # Exemplo de chamada real
+    return render(request, 'pedidos/lista_pedidos.html', {'pedidos': pedidos})
+
 
 @login_required
 def listar_pedidos(request):
@@ -64,3 +82,17 @@ def editar_pedido(request, pk):
 def detalhes_pedido(request, pk):
     pedido = get_object_or_404(Pedido, pk=pk)
     return render(request, 'detalhes_pedido.html', {'pedido': pedido})
+
+
+def dashboard_mock(request):
+    # Dados fixos só para visualização
+    context = {
+        'lucro_total': 15000.00,
+        'despesas_totais': 7000.00,
+        'quantidade_servicos': 45,
+        'grafico_evolucao': {
+            'meses': ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+            'valores': [2000, 2500, 2200, 3000, 2800, 3500],
+        }
+    }
+    return render(request, 'dashboard.html', context)
