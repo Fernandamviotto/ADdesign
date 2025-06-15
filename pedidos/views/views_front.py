@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from pedidos.decorators import login_required_if_not_debug
 from pedidos.models import Pedido, Fornecedor
 from pedidos.forms import PedidoForm, FiltroForm
 from django.shortcuts import render
@@ -22,7 +23,7 @@ def listar_pedidos(request):
     return render(request, 'pedidos/lista_pedidos.html', {'pedidos': pedidos})
 
 
-@login_required
+@login_required_if_not_debug
 def listar_pedidos(request):
     form = FiltroForm(request.GET or None)
     pedidos = Pedido.objects.all()
@@ -51,7 +52,7 @@ def listar_pedidos(request):
     }
     return render(request, 'listar_pedidos.html', context)
 
-@login_required
+@login_required_if_not_debug
 def criar_pedido(request):
     if request.method == 'POST':
         form = PedidoForm(request.POST)
@@ -65,7 +66,7 @@ def criar_pedido(request):
         form = PedidoForm()
     return render(request, 'criar_pedido.html', {'form': form})
 
-@login_required
+@login_required_if_not_debug
 def editar_pedido(request, pk):
     pedido = get_object_or_404(Pedido, pk=pk)
     if request.method == 'POST':
@@ -78,7 +79,7 @@ def editar_pedido(request, pk):
         form = PedidoForm(instance=pedido)
     return render(request, 'editar_pedido.html', {'form': form})
 
-@login_required
+@login_required_if_not_debug
 def detalhes_pedido(request, pk):
     pedido = get_object_or_404(Pedido, pk=pk)
     return render(request, 'detalhes_pedido.html', {'pedido': pedido})

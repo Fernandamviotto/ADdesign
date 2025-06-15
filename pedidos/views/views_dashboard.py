@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum, Count
+from pedidos.decorators import login_required_if_not_debug
 from pedidos.models import Pedido
 import json
 import plotly.graph_objs as go
@@ -11,13 +12,13 @@ def dashboard_mock(request):
     return render(request, "dashboard.html")
 
 
-@login_required
+@login_required_if_not_debug
 def dashboard(request):
     user = request.user
     if user.is_superuser or user.groups.filter(name='admin').exists():
         pedidos = Pedido.objects.all()
     else:
-        pedidos = Pedido.objects.filter(usuario=user)
+        pedidos = Pedido.objects.filter(usuario=request.user)
 
     total_lucro = pedidos.aggregate(lucro=Sum('valor'))['lucro'] or 0
     despesas = pedidos.filter(tipo='Despesa').aggregate(total=Sum('valor'))['total'] or 0

@@ -1,0 +1,35 @@
+/* dashboard.css */
+
+/* Container principal */
+.container {
+    max-width: 900px;
+  }
+  
+  /* Cards principais */
+  .card {
+    border: 1px solid #ddd;
+    transition: box-shadow 0.3s ease;
+    cursor: default;
+  }
+  
+  /* Sombra ao passar mouse */
+  .card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Títulos dos cards */
+  .card h5 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Valores dos cards */
+  .card p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
+  }
+  
+  /* Cores específicas já estão no HTML: text-success, text-danger, text-primary */
+  

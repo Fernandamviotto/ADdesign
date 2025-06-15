@@ -1,17 +1,37 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'pedidos/css/dashboard.css' %}" />
+{% endblock %} {% block content %}
+<div class="container mt-4">
+  <h1>Dashboard</h1>
 
-{% block content %}
-<h2>Dashboard</h2>
+  <div class="row text-center mt-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm p-3 mb-3 rounded">
+        <h5 class="text-success">Lucro Total</h5>
+        <p>R$ {{ total_lucro }}</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm p-3 mb-3 rounded">
+        <h5 class="text-danger">Despesas</h5>
+        <p>R$ {{ total_despesas }}</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm p-3 mb-3 rounded">
+        <h5 class="text-primary">Serviços</h5>
+        <p>{{ total_pedidos }}</p>
+      </div>
+    </div>
+  </div>
 
-<div>
-  <p><strong>Total Lucro:</strong> R$ {{ total_lucro }}</p>
-  <p><strong>Quantidade de Serviços:</strong> {{ quantidade_servicos }}</p>
-  <p><strong>Despesas:</strong> R$ {{ despesas }}</p>
+  <div class="mt-5">
+    <h4>Evolução Mensal</h4>
+    {{ grafico_plotly|safe }}
+  </div>
 </div>
 
-<div id="graph-div" data-graph='{{ graph_html|safe }}' style="width:100%;height:400px;"></div>
-
+<!-- Scripts Plotly e customizados -->
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script src="{% static 'pedidos/js/plotly-charts.js' %}"></script>
 {% endblock %}
