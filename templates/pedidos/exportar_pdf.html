@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório de Pedidos</title>
+    <link rel="stylesheet" href="{% static 'pedidos/css/pdf.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 8px 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .summary {
+            margin-bottom: 40px;
+        }
+
+        .summary p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Relatório de Pedidos</h1>
+
+    <div class="summary">
+        <p><strong>Total de Pedidos:</strong> {{ pedidos|length }}</p>
+        <p><strong>Data do Relatório:</strong> {{ data_geracao }}</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Serviço</th>
+                <th>Valor (R$)</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pedido in pedidos %}
+            <tr>
+                <td>{{ pedido.id }}</td>
+                <td>{{ pedido.cliente }}</td>
+                <td>{{ pedido.servico }}</td>
+                <td>{{ pedido.valor }}</td>
+                <td>{{ pedido.data|date:"d/m/Y" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

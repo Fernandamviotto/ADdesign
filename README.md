@@ -1,7 +1,35 @@
-# Ad Design
+# AiSim-Style
 
-## Visão Geral do Projeto
-O Disparador de Webhooks é uma solução desenvolvida para o PlugBoleto que permite aos clientes reenviar notificações de webhook por conta própria, eliminando a necessidade de acionar o suporte técnico. Esta ferramenta proporciona maior autonomia aos clientes, reduzindo significativamente o volume de tickets de suporte relacionados à sincronização de cobranças.
+O projeto um sistema web para controle de receitas, despesas e geração de relatórios gerenciais para um microempreendedor. O sistema oferece um painel administrativo com dashboard, controle de pedidos de serviço, cálculo de lucros, e exportações de relatórios em PDF e Excel.
 
-## Problema Solucionado
-Atualmente, quando clientes perdem notificações de webhook sobre atualizações em suas cobranças, eles precisam contatar o suporte técnico para solicitar o reenvio manual dessas notificações. Este processo demanda intervenção manual da equipe de suporte, gerando um volume considerável de tickets. O Disparador de Webhooks permite que os próprios clientes realizem esse processo, otimizando recursos e melhorando a experiência do usuário.
+## 🧩 Visão Geral
+
+Este projeto foi desenvolvido com o objetivo de fornecer ao microempreendedores uma ferramenta simples, intuitiva e eficiente para controle financeiro
+
+A aplicação é construída com:
+
+- **Django** (Python) no backend
+- **Bootstrap 5** no frontend
+- **Plotly** para gráficos interativos
+- **WeasyPrint** para exportação de PDFs
+- **Pandas** para exportação de planilhas Excel
+
+## ❓ Problema Solucionado
+
+O microempreendedores enfrenta dificuldades para gerenciar suas finanças, acompanhar o lucro real e gerar relatórios organizados de seus serviços prestados. o Projeto resolve esse problema oferecendo:
+
+- Um **painel de controle** com indicadores visuais e dados financeiros
+- **Cadastro e gestão de pedidos de serviço**, com cálculo automático de lucro
+- **Visualização de evolução mensal** por meio de gráficos interativos
+- **Exportação de relatórios** financeiros em PDF e Excel para fins de contabilidade ou análise
+- **Controle de acesso** com autenticação de usuários (admin e funcionário)
+
+## 🔧 Funcionalidades Principais
+
+- [x] Autenticação de usuários
+- [x] Cadastro e edição de pedidos
+- [x] Dashboard com lucro, despesas e número de serviços
+- [x] Gráficos com Plotly.js
+- [x] Exportação para PDF (via WeasyPrint)
+- [x] Exportação para Excel (via Pandas)
+- [x] Design responsivo com Bootstrap

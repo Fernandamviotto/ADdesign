@@ -1,5 +1,8 @@
 from django.urls import path
-from .views import views_front, views_export, views_auth, views_dashboard
+
+from pedidos.views import views_export
+from .views import views_front, views_auth, views_dashboard
+from exportacoes.views_export import exportar_pdf  
 
 urlpatterns = [
     path('', views_dashboard.dashboard, name='dashboard'),  # /pedidos/
