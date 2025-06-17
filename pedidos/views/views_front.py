@@ -64,7 +64,7 @@ def criar_pedido(request):
             return redirect('pedidos:listar_pedidos')
     else:
         form = PedidoForm()
-    return render(request, 'criar_pedido.html', {'form': form})
+    return render(request, 'pedidos/criar_pedido.html', {'form': form})
 
 @login_required_if_not_debug
 def editar_pedido(request, pk):
