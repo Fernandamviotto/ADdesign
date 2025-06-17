@@ -1,17 +1,10 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <div class="container mt-4">
   <h2 class="mb-4">Criar Novo Pedido</h2>
 
-  {% if messages %}
-    {% for message in messages %}
-      <div class="alert alert-{{ message.tags }}">
-        {{ message }}
-      </div>
-    {% endfor %}
-  {% endif %}
+  {% if messages %} {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+  {% endfor %} {% endif %}
 
   <form method="post" novalidate>
     {% csrf_token %}
@@ -20,17 +13,15 @@
       <!-- Tipo e Data -->
       <div class="col-md-6 mb-3">
         <label for="id_tipo" class="form-label">Tipo</label>
-        {{ form.tipo }}
-        {% if form.tipo.errors %}
-          <div class="text-danger">{{ form.tipo.errors.0 }}</div>
+        {{ form.tipo }} {% if form.tipo.errors %}
+        <div class="text-danger">{{ form.tipo.errors.0 }}</div>
         {% endif %}
       </div>
 
       <div class="col-md-6 mb-3">
         <label for="id_data" class="form-label">Data</label>
-        {{ form.data }}
-        {% if form.data.errors %}
-          <div class="text-danger">{{ form.data.errors.0 }}</div>
+        {{ form.data }} {% if form.data.errors %}
+        <div class="text-danger">{{ form.data.errors.0 }}</div>
         {% endif %}
       </div>
     </div>
@@ -38,9 +29,8 @@
     <!-- Descrição -->
     <div class="mb-3">
       <label for="id_descricao" class="form-label">Descrição</label>
-      {{ form.descricao }}
-      {% if form.descricao.errors %}
-        <div class="text-danger">{{ form.descricao.errors.0 }}</div>
+      {{ form.descricao }} {% if form.descricao.errors %}
+      <div class="text-danger">{{ form.descricao.errors.0 }}</div>
       {% endif %}
     </div>
 
@@ -48,23 +38,21 @@
       <!-- Valor e Fornecedor -->
       <div class="col-md-6 mb-3">
         <label for="id_valor" class="form-label">Valor (R$)</label>
-        {{ form.valor }}
-        {% if form.valor.errors %}
-          <div class="text-danger">{{ form.valor.errors.0 }}</div>
+        {{ form.valor }} {% if form.valor.errors %}
+        <div class="text-danger">{{ form.valor.errors.0 }}</div>
         {% endif %}
       </div>
 
       <div class="col-md-6 mb-3">
         <label for="id_fornecedor" class="form-label">Fornecedor</label>
-        {{ form.fornecedor }}
-        {% if form.fornecedor.errors %}
-          <div class="text-danger">{{ form.fornecedor.errors.0 }}</div>
+        {{ form.fornecedor }} {% if form.fornecedor.errors %}
+        <div class="text-danger">{{ form.fornecedor.errors.0 }}</div>
         {% endif %}
       </div>
     </div>
 
     <button type="submit" class="btn btn-success">Salvar Pedido</button>
-    <a href="{% url 'home' %}" class="btn btn-secondary">Cancelar</a>
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary">Cancelar</a>
   </form>
 </div>
 
@@ -73,7 +61,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     const valorInput = document.getElementById("id_valor");
     valorInput.addEventListener("input", function (e) {
-      let value = e.target.value.replace(/\D/g, '');
+      let value = e.target.value.replace(/\D/g, "");
       value = (value / 100).toFixed(2);
       e.target.value = value;
     });
