@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-4">Editar Pedido</h2>
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+
+    <div class="row">
+      <!-- Descrição -->
+      <div class="col-md-6 mb-3">
+        <label for="id_descricao" class="form-label">Descrição</label>
+        {{ form.descricao }}
+      </div>
+
+      <!-- Tipo -->
+      <div class="col-md-6 mb-3">
+        <label for="id_tipo" class="form-label">Tipo</label>
+        {{ form.tipo }}
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Valor -->
+      <div class="col-md-6 mb-3">
+        <label for="id_valor" class="form-label">Valor (R$)</label>
+        {{ form.valor }}
+      </div>
+
+      <!-- Despesas -->
+      <div class="col-md-6 mb-3">
+        <label for="id_despesas" class="form-label">Despesas (R$)</label>
+        {{ form.despesas }}
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Fornecedor -->
+      <div class="col-md-6 mb-3">
+        <label for="id_fornecedor" class="form-label">Fornecedor</label>
+        {{ form.fornecedor }}
+      </div>
+
+      <!-- Data -->
+      <div class="col-md-6 mb-3">
+        <label for="id_data" class="form-label">Data</label>
+        {{ form.data }}
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Status -->
+      <div class="col-md-6 mb-3">
+        <label for="id_status" class="form-label">Status</label>
+        {{ form.status }}
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+      <a href="{% url 'listar_pedidos' %}" class="btn btn-secondary">Cancelar</a>
+    </div>
+  </form>
+</div>
+
+<!-- Máscaras e calendário -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet" />
+
+<script>
+  $(document).ready(function () {
+    $('#id_valor, #id_despesas').mask('#.##0,00', {reverse: true});
+    flatpickr('#id_data', {
+      dateFormat: 'd/m/Y',
+      locale: 'pt'
+    });
+  });
+</script>
+{% endblock %}
